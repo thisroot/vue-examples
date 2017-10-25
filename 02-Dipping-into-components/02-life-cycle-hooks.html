@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>My first Vue app</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+<div id="app">
+    {{ a }}
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            a: "Привет медвед"
+        },
+        created: function () {
+            // `this` указывает на экземпляр vm
+            console.log('Значение а: ' + this.a);
+        }
+    });
+</script>
+</body>
+</html>

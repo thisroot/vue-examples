@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>My first Vue app</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+<div id="example-2">
+    <!-- `greet` — это название метода, определённого ниже -->
+    <button v-on:click="greet">Поприветствовать</button>
+</div>
+
+<script>
+
+    var example2 = new Vue({
+        el: '#example-2',
+        data: {
+            name: 'Vue.js'
+        },
+        // определяйте методы в объекте `methods`
+        methods: {
+            greet: function (event) {
+                // `this` внутри методов указывает на экземпляр Vue
+                alert('Привет, ' + this.name + '!')
+                // `event` — нативное событие DOM
+                if (event) {
+                    alert(event.target.innerText)
+                }
+            }
+        }
+    })
+    example2.name = "Вася";
+    // вызывать методы можно и императивно
+    example2.greet() // => 'Привет, Vue.js!'
+
+</script>
+</body>
+</html>

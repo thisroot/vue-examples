@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+<div id="example">
+
+    <input v-model="parentMsg">
+    <br>
+    <!--кебаб-кейс-->
+    <child v-bind:my-message="parentMsg"></child>
+</div>
+<script>
+    // регистрация
+
+
+
+    Vue.component('child', {
+        // определяем входной параметр
+        props: ['myMessage'],
+        // как и другие данные, входной параметр можно использовать
+        // внутри шаблонов (а также и в методах, обращаясь через this.message)
+        template: '<span>{{ myMessage }}</span>'
+    });
+
+    // создание корневого экземпляра
+    new Vue({
+        el: '#example',
+        data: {
+            parentMsg: "Введите что нибудь"
+        }
+    })
+</script>
+</body>
+</html>

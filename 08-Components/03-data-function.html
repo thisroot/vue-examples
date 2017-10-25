@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+    <div id="example-2">
+        <simple-counter></simple-counter>
+        <simple-counter></simple-counter>
+        <simple-counter></simple-counter>
+    </div>
+<script>
+    var data = { counter: 0 };
+    Vue.component('simple-counter', {
+        template: '<button v-on:click="counter += 1">{{ counter }}</button>',
+        // технически data является функцией, так что Vue
+        // не будет жаловаться, но при каждом вызове эта функция
+        // возвращает ссылку на один и тот же внешний объект
+        data: function () {
+            //return data
+            //Какая неожиданность! Увеличение одного из счётчиков
+            // также увеличит и остальные два, поскольку все они
+            // используют один и тот же объект data. Исправим ошибку:
+            // пусть функция при каждом вызове возвращает вновь
+            // созданный объект data.
+            return {counter: 0}
+        }
+    });
+    new Vue({
+        el: '#example-2'
+    })
+</script>
+</body>
+</html>

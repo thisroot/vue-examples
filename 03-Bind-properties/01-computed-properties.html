@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>My first Vue app</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+<div id="example">
+    <p>Изначальное сообщение: "{{ message }}"</p>
+    <p>Сообщение задом наперёд: "{{ reversedMessage }}"</p>
+</div>
+
+<script>
+    var vm = new Vue({
+        el: '#example',
+        data: {
+            message: 'Привет'
+        },
+        computed: {
+            // геттер вычисляемого значения
+            reversedMessage: function () {
+                // `this` указывает на экземпляр vm
+                return this.message.split('').reverse().join('')
+            }
+        }
+    });
+
+    console.log(vm.reversedMessage); // => 'тевирП'
+    vm.message = 'Пока';
+    console.log(vm.reversedMessage); // => 'акоП'
+
+</script>
+</body>
+</html>

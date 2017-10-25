@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+<div id="app-6">
+    <select v-model="selected">
+        <option disabled value="">Выберите один из вариантов</option>
+        <option>A</option>
+        <option>B</option>
+        <option>C</option>
+    </select>
+    <span>Выбрано: {{ selected }}</span>
+</div>
+<script>
+    var app6 = new Vue({
+        el: '#app-6',
+        data: {
+            selected: ""
+        }
+    })
+</script>
+</body>
+</html>
